@@ -1,0 +1,409 @@
+fhjkdhfkdslThis is a personal project, that I started doing about 3 months ago, I still have a lot of work to do. For know my biggest problem is how I should honey encrypt email , since we often have a maximum of 4 different email the possible output shouldn't invent thousand email for each password. And in the case a hacker know the victim email he could use this to detect wrong password ... So maybe It's a better idea to not honey encrypt email ...
+
+Ps : sorry for my english...I'm french
+
+TLDR : I don't know how email should be Honey Encrypted
+Each word in the phrase has a certain amount of entropy which they contribute to the total secret entropy, as measured in bits of entropy. The amount of work to guess the missing words amount to about 2 ^ (sum of unknown entropy). If 1 word has 10 bits and 2 words are missing that's 2^(10+10) work to guess, or 2^20 attempts - which is quite small.
+
+There is however an existing scheme for splitting secrets for this purpose, Shamir's secret sharing scheme.
+
+You can set a threshold of how many shares out of the total created which will be necessary to recover the private key, like 3 out of 5 total or any other threshold value which you want (you can of course skip the threshold and just go for 5 out of 5 for recovery, etc). If you only have some shares but not enough to meet the threshold then you have *no* advantage at guessing the private key compared to if you didn't know any shares at all (information theoretic security).
+If you use AES for encryption, then security of the files depends on the security of your encryption password + account security & the security of your own computer.
+
+If you use zipcrypto (ancient and insecure, but may still be default in some places), then you may as well not encrypt.
+
+As for determining if your password, account and computer is secure enough, that's all down to your own threat model.
+
+Note that a key file generally doesn't add much practical security over a password, but it has some uses since it makes bruteforce attacks more complicated. But you still have to make sure it's always available to you without being available to the potential attacker, or else it's pointless.
+Read again everything we said here: [https://www.reddit.com/r/crypto/comments/mhvw8f/onedrive\_or\_bitwarden\_for\_secure\_documents/](https://www.reddit.com/r/crypto/comments/mhvw8f/onedrive_or_bitwarden_for_secure_documents/)
+Not all zip programs use the same methods for encryption. Some have incredibly weak key derivation and as such aren’t very secure.
+There's a chance, but it's minimal.
+Do you want to encrypt the folder file by file, or as a whole? 
+
+If you want a whole folder encrypted as one, first archive it (with libtar, probably), so you have a single file to work on.
+
+You can then treat (the/each) file as a single char* for encryption API purposes. [Doing it with libsodium is pretty easy, this document should explain everything you need.](https://doc.libsodium.org/public-key_cryptography/authenticated_encryption) I believe the OpenSSL equivalent would be [EVP Seal/Open](https://wiki.openssl.org/index.php/EVP_Asymmetric_Encryption_and_Decryption_of_an_Envelope), but I haven't messed with OpenSSL in a long time, someone more familiar than me should probably doublecheck.
+I wouldn't recommend OpenSSL. Instead, take a look at libsodium. It's safer.
+So - tangental question.  How does some of this analysis change when factoring in the increasing focus by the US IRS on cryptocurrency exchange?  The concept of on-chain privacy seems directly contrary to the evolving policy on that front, which makes me wonder whether we'll see more attempts to restrict cryptocurrencies due to such.
+
+Not like it'd actually help because we've down that road with export controls on cryptography on the past, but...
+Of interest to /r/crypto, this talks about the tension between cryptocurrency and cryptography, and the cryptographers that work on cryptocurrency. If you're looking at the title thinking, "This is cryptocurrency spam! GTFO my /r/crypto you blockchainiac!" then you might want to read the part about gatekeeping.
+
+I was conflicted about submitting it here, because while it's culturally relevant for /r/crypto, it's also likely to trigger the gag reflex of a lot of readers. I asked one of the mods privately and they said they thinks it belongs here.
+
+Also, I never abbreviate the wrong term as "crypto" in the entire article, so if that's a pet peeve of yours, proceed without worry :3
+Thanks for sharing, I found it informative and pretty balanced
+i always say crypto means cryptography as cryptocurrency newbies flood reddit, forums and chats and ask in channels about the cryptography stuff which coins they should buy. at one point this gets reaaaally unnerving, because of course most of them do not read the topic or FAQ of that area.
+Had a quick look at the code:
+
+I know it's more of a self-attack, but isn't the scanf castle.c:112 vulnerable to buffer overflows? I get that it's more of a "well don't do that then", but it seems kinda sloppy to silently corrupt memory if someone's password is too long.
+
+And doesn't scanf only read a single word when used like that, so if someone uses a 6 word passphrase, the later words just won't be used for encryption, which is Really Bad.
+a nice basic lockpick set and some cheap locks
+Well, before buying any books I would peruse her library first to check what she has and then also "interrogate her CIA style" ;-) The info you want to extract? What books she really likes, or has read in the past but would like to have on her shelves. 
+
+For instance, a classic - old but considered kind of a "bible" - is [The Codebreakers](https://www.goodreads.com/book/show/29608.The_Codebreakers) by David Kahn, she's probably already read it and might have a cheap or paperback copy of it, so a nice thing would be to get the hardcover version (is slightly over your budget on Amazon but you might find it cheaper around)
+
+Or you could get something newer but on different topic, very related to cryptography "somehow", it came out last month, if she's also interested in biology, it might do: [The Code Breaker](https://www.goodreads.com/book/show/54968118-the-code-breaker) by Walter Isaacson (I'm not affiliated with this suggestion, but it's kind of funny: you could even joke and play dumb saying that you thought it was about crypto ;-)
+
+What about movie/tv series? You could get a DVD/BluRay (I know, everything is on Netflix, but there are things people would like to own, especially if old. See? I told you interrogation would come handy!), things like Wargames, Sneakers, Hackers, Alias...
+
+Other ideas could be "toys" (never refer to them as such, crypto people tend to get offended ;-) I'm thinking about puzzles like [Eternity](https://en.wikipedia.org/wiki/Eternity_puzzle) or Eternity II, unfortunately new are very difficult to find and expensive (on ebay you might find it for not less than $40 but they are usually from Down Under) but, honestly, if I were given a second-hand one, I wouldn't mind at all and would consider it a great gift!
+
+For something cheaper, a simple t-shirt, like the "Crypto-king" Burgerking styled, or with the Kriptos letters on it, I'm talking about this [sculpture](https://en.wikipedia.org/wiki/Kryptos), just in case you've never heard of it.
+
+Or actually, another great idea if you live nearby, or plan to visit Washington sooner or later: a ticket to the [Spy Museum](https://spymuseumstore.org/), actually, you could get lots of other gift ideas from their store.
+
+Happy birthday to your friend!
+Maybe an encryption disk? [https://ibb.co/kxV8m3B](https://ibb.co/kxV8m3B)  
+I gave myself this present, because no one knows a better gift than myself :)
+just an idea, maybe you don't have to buy her a gift related to cryptography but you can instead have certain crypto puzzles she has to solve to get to the gift
+What about a t-shirt?  Such as:
+
+* [Elliptic curve t-shirt](https://www.redbubble.com/i/t-shirt/Elliptic-Curves-by-hkrmerch/47865160.IJ6L0.XYZ)
+* [RSA t-shirt](https://www.redbubble.com/i/t-shirt/Public-RSA-Key-by-cem/14556375.WFLAH)
+* [Encryption t-shirt](https://www.redbubble.com/i/t-shirt/Dance-Like-No-One-s-Watching-Encrypt-Like-Everyone-Is-by-dumbshirts/21378117.UIIS2.XYZ)
+* [A nerdy mathematics t-shirt](https://www.amazon.com/Math-Shirt-Greater-Average-T-Shirt/dp/B07P9LX86H)
+Budget limits?
+
+A simple suggestion is cryptography books. See if you can find out which (if any) she has already, and get her a good book which she doesn't already have.
+The description of "forever key cryptography" seems very suspect to me. He is basically deriving new keys all the time, and then claiming that breaking one of those keys would not break the others, and so the system will hold forever. This is obviously not true for fixed-length keys.
+
+I think the author gets around this by having effectively infinite-entropy keys (specifically, ordered sets of real numbers), and using only some of that entropy (the "ordinal matrix") for actual encryption. Money quote:
+
+> The attacker does not know the size of K0. There are 
+infinite number of options for K0 that given the extraction 
+procedures to K1, K2, .. Kt would have a key in each of the 
+infinite series (t infinite series). Say then, that despite
+infinite use, t → ∞, brute force cryptanalysis of the secret K0
+is doomed to fail.
+
+This ignores the finite realities of computing. It's also really hand-wavey.
+Failed to understand the point of this article.
+
+For instance, " community of communication partners who shares a secret cryptographic instrument while not sharing actual keys" - This can be done with interactive Diffie Hellman, Shamir's Secret Sharing or non-interactive with PBC of extended degree.
+
+I think we need a better example. Or I don't understand. Can someone  explain it to me like I was 5.
+This subreddit is about cryptography, not cryptocurrency, but in this case I'm allowing the post because it's a related and interesting question.
+
+Safely storing keys can be a hard problem depending on your circumstances, maybe somebody else here has a good suggestion. My own suggestion would be to try to find somebody you can trust to hold it to minimize the risk of loss.
+Shamir's secret sharing, assuming that's what's going on under the hood, is fairly well established and solid. The premise on their website assuring that the basic mode is a 2/3 multisig and they hold only one key gives you a pretty solid place to lose one of your two keys and recover. It should also shield you against them going under, as you still have two keys.
+
+What you do need to consider is that the "free" version is simply a wallet app, and apparently actually getting the above will set you back $120 a year. Is it worth that? That's debatable. Personally I'd be more likely to use a single hardware device, with the seed retained safely.
+
+Also, consider that this actually costs you some of the benefit of your hardware device, which ideally is very secure. If someone can compromise your mobile device, then they have the key from your app and access to the escrowed key and can "recover a lost device" for the hardware piece they don't have.
+Hi, 
+
+Is there any good videos to watch on learning about crypto for beginners??
+Thanks,
+> The first is to find |P| and factor it. But factoring is a hard problem (and finding |P| isn't exactly easy). Is it feasible to factor numbers that are around the size 2^160? 
+
+Numbers of this size can be factorized almost instantly. You can test by yourself here: https://www.alpertron.com.ar/ECM.HTM
+You do not even need to go as far as using complex tools like GNFS (which is the best to factor much larger integers).
+
+> His other option would be to find the number of points on the curve (the order of the group) then check that number is divisible by a large prime.
+
+A good thing we have [Schoof's algorithm](https://en.wikipedia.org/wiki/Schoof%27s_algorithm) to count the number of points on an elliptic curve, and its improvement the [SEA algorithm](https://en.wikipedia.org/wiki/Schoof%E2%80%93Elkies%E2%80%93Atkin_algorithm) that makes it very efficient.
+
+> Then with a high probability, P will have order which is divisible by that same large prime. This has the same problem that Bob's first approach had, except finding the number of points on the curve is (as far as I can tell) harder than finding |P|. Both of these options seem bad. In practice, what is done to ensure |P| is divisible by a large prime?
+
+You might as well only checks that the number of points (calculated with the SEA algorithm) is a prime number. This can be done with a primality test such as the [Miller-Rabin test](https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test).
+
+Of course, it depends on the model of the curve. Curves in Montgomery form always have at least a factor 4 in the cardinality, so it has to be taken into account.
+
+> Attacks with Pairing: I don't entirely understand the concept of pairings. But as far as I can tell, as long as the curve used is not supersingular (another word I don't completely understand), attacks with pairings are probably infeasible. Is there a fast way to determine if a curve is supersingular?
+
+​It is related to the embedding degree of the curve. If you generate random parameters it is unlikely you will find a pairing-friendly curve.
+Though, a sanity check is not costly. See the transfer page on [safecurves](https://safecurves.cr.yp.to/transfer.html).
+
+> Anomalous Curves: If the number of points on an elliptic curve over F_q is equal to q, then the curve is called anomalous, and solving the ECDLP is easy. Can Bob determine if a curve is anomalous without computing the number of points on the curve? If not, is computing the number of points on the curve feasible?
+
+Same as above. You really need to construct the curve in a specific manner to find such a rare curve.
+And anyone can check the cardinality so a malicious use of an anomalous curve can be detected.
+Pairings allow moving from an elliptic curve group to extension fields, with a complex field being an extension field of degree 2 for example.
+
+The degree of the extension field you move to is determined by your elliptic curve embedding degree.
+
+Just like there is the GNFS that is significantly faster than generic group techniques (Pollard), on extension fields there is the TNFS (Towered Number Field Sieve) that can be used.
+
+So basically pairings move a DLP computation from a group where it's hard to a field where more efficient techniques are available.
+
+Now a safe size is about 384-bit (curve prime modulus) x 12 (embedding degree) = ~4608-bit. If your EC prime modulus is about 256-bit, an embedding degree of at least 18 should be ok (but it's actually hard to find low embedding degree curves and finding efficient low-embedding degree curves is worthy of a paper).
+Relative noob and even more so for EC - so I am asking questions rather than answering questions - hopefully you or someone else will answer them.  
+
+> Pohlig-Hellman: To protect against this, Bob must ensure that the order of P is divisible by a large prime number 
+
+
+1) Isn't it a recommended practice to use standard curves & generators?   
+
+2) Aren't there lists of safe primes (or Sophie Germain Primes from which Safe primes can be known easily) which can be used? Since (p - 1) for these are guaranteed to have large factors. For e.g. RFC 3526 lists several safe primes for use in DHKE. Can't something similar be done for EC?   
+
+
+
+So I don't understand the motivation for your question (considering others have answered your questions, this is surely because I am stupid & don't know enough).
+Are you really just gonna make a claim like that and then dump the entire IETF spec here with no further explanation? It sounds interesting but I’d like to hear more details...
+There are a lot of different algorithms with widely different purposes where data flow diagrams would make them look very similar. The similarity is more likely due to a common external factor - this design pattern is easy to reason about when you build an algorithm.
+I mostly agree with u/Natanael_L, but there is "a kind" of similarity.
+
+Part of why neural networks are built they way they are is that the combination is easy to reason about and train ... but another big part is that the combination of linear connections and non-linear activation functions is able to approximate \*any\* function (within the limits of the width and depth of the network, of course).
+
+Block ciphers obviously aren't trying to approximate a function ... however, one \*does\* want the space of possible outputs to be as large as possible. A block cipher, of course, cannot be retrained to produce different outputs for the same input, but suppose it could.
+
+In fact, think of it this way: the password retrains the cipher to produce different output for a given input. Then, as with the neural network, we want the space of possible functions that a password can retrain the cipher network to to be very large.
+
+Not "all possible functions" as in the neural network case. We need reversible and chaotic functions, but still a very large (and non-linear) space of functions.
+This is only a superficial verbal similarity. The property being referred to by the term 'linear' is vastly different between NN and cipher round functions.
+knowing any part of the key stream does not reveal any other part of the key stream. so much so, that if all but one bit of the key stream is known, you can't guess the one unknown bit.
+When using a secure stream ciphervin a proper way the risk isn't leakage from known message structures, but malleability. Somebody might *replace* parts of a message by simply XOR:ing in the difference between the guessed message and the intended alternate message. This is prevented by adding authentication tags, often a keyed hash function which depends on the ciphertext and the secret key, so that the recipient can check if the message is intact or not when reading it.
+> XOR the know plaintext with the ciphertext to reveal part of key stream?
+
+And then what? :) Keystream is not repeated and knowing keystream does not help in predicting past/previous keystream elements, nor does it help with recovering the cipher key.
+> Thus isn’t it easy to defeat stream cipher if you know some plaintext of the ciphertext?
+
+A stream cipher functions like a One Time Pad. The key is never reused. Using a CSPRNG, you generate a keystream which is XORed with the plaintext. So knowing a part of the keystream is of no use because no part of the stream is reused. And with a CSPRNG, knowing part of the stream will not help you guess/predict the next or previous parts of the stream.
+The order is the number of points in the subgroup. A public key is a point in that subgroup.
+
+So yes.
+For a curve without subgroups I believe the field size is (usually?) exactly equivalent to the number of possible keys.
+I don't know much of the math, but I think this thread is of relevance:
+
+https://crypto.stackexchange.com/questions/83538/error-correcting-code-vs-lattice-based-crypto
+I would start with math. Group theory and Finite Fields. Try to understand why this math is useful for crypto. Shamir's Secret Sharing is a good place to start.
+
+Encryption basics, confusion, diffusion, etc. AES and SHA is a good thing to study.
+
+Asymmetric cryptography. My preference goes to Elliptic Curves. Prime based, such RSA is more cumbersome to understand, specifically when you jump to schemes like Diffie Hellman and ECIES. Fiat-Shamir heuristics and Schnorr Signatures ate quite easy to grasp and very important constructions.
+
+Just to start, but the field is quite big. A lot to explore. Even more if you mix it with distributed systems.
+What about the sidebar?
+
+This questions seems to pop up here once every week.
+There's been some actual work in finding differential trails using neural nets. Eg
+
+https://eprint.iacr.org/2019/037
+
+https://eprint.iacr.org/2020/571
+
+https://eprint.iacr.org/2020/846
+
+https://eprint.iacr.org/2020/953
+There are perhaps a few styles of cryptosystems: heuristic, complexity-theoretic, and information-theoretic.  
+
+Heuristic cryptosystems (SHA, MD5, AES, etc.) are designed to be as strong and fast as possible, but does not leverage any hardness assumption.  These can somewhat be attacked by deep learning, though mostly round-reduced or weak ones.
+
+Complexity-theoretic cryptosystems (DH, RSA-OAEP, etc.) base their security on an underlying hardness assumption.  **Any** attack on these solutions, machine learning or not, is morally equivalent to an attack on the underlying hardness (e.g. breaking DDH or RSA etc.), which would be a groundbreaking mathematical result.  You're more likely to get traction using solvers or automated theorem proving to break something here than learning.
+
+Lastly, there are information-theoretic cryptosystems (e.g. one-time pads) which cannot be broken short of implementation defects.
+
+For more musings on ML and crypto, take it from someone who actually knows a thing or two, matriarch of cryptography and Turing Award winner Shafi Goldwasser: [talk](https://www.youtube.com/watch?v=bMJtCe1aK0w)
+Stable invalid values: E.g. trapdoor functions are designed to have specific values that reverse them, all other values just produce noise. This makes it hard to train since all values except one has garbage result.
+
+Value space: You need some way to search through <all possible functions>. That seems like something that'd take a while no matter how much you parallelize. This is made even worse by the first point. You get basically zero guidance towards a good solution if you're trying to break a modern as-yet unbroken crypto.
+
+Take the first two together and...are you doing anything more than really elaborate bruteforcing of the keyspace?
+*Rips bong again*
+> The fact is that from one side a neural network should (in theory) be able to represent any function but on the other side hash functions give outputs with no correlation to their input and neural networks are good in finding patterns. I didn't find much on the internet. What do you think?
+
+Neural Nets are by far not alone in being universal approximators and are mostly used on structured data (images, text, sound...). So they are probably not even the right ML tool.
+
+To invert a hash function, you'd need tons of examples anyway (you have, what, 2^256 possible inputs? And they all need to match...), which you literally don't have for most secure ones (I think SHA-1 has a few pre-images? SHA-256 has none). I doubt NNs could learn the inverse effectively even if you had them, ML is not that great at learning discrete problems (and you don't and if the hash function is secure, you will never have any pre-images).
+Let me bring you a curiosity. Have you notice that pattern recognition is very related to compression? If you can't compress you can't find patterns. And compression rates are a good measure of how safe cryptographic schemes are. Now make your conclusions.
+The field of neuro-cryptanalysis is based on this idea, but there has been surprisingly little development in recent years: 
+https://www.scitepress.org/Papers/2021/103178/103178.pdf
+https://link.springer.com/chapter/10.1007/978-3-642-34500-5_75
+>What do you think?
+
+This sounds like a great ideia if you can find an idiot with deep pockets to fund it. Just keep raking in the money and promisse that you'll have results... eventually.
+
+Other than that, it's ludicrous.
+>What do you think?
+
+No, neural networks are not magic.
+When you train a neural net, you're showing examples of how it's done.
+
+How do you show an example of breaking hash functions like sha256? We don't know how to do it. You can train a neural net to identify a tree, **because we know how to identify a tree**.
+
+You're talking about generalizing to "here's a problem, and here's the function that solves that problem" and training a neural net on that dataset? And hoping if you give it a problem of "find collision for sha256" it'll solve it? I don't think so. You've basically got general AI if you could do that. And even then, there are limits to what any intelligence can do, you can't just ask it "what is the meaning of life" and get a solution just because it's solved other problems before.
+I am pretty deep into a project for finding hints to simplifying the breaking of RSA using ML. The question isn't the possibility, it is the cost effectiveness of using the ML model instead of conventional attack process. The rig is pretty straightforward, I am  providing the pubic key as the input, and the factors as the outputs. I can generate RSA 512 keys fast enough to keep a GPU from starving. There has been some success, but it isn't currently cheaper than brute force.
+*grandson of anton*
+So you could train a neural network to crack a hash, assuming you over-fit it on a giant lookup table.
+
+Basically, yeah you can do it, for more resources and less accuracy than traditional methods.
+
+Any encrypted data that had a clear pattern for a NN to exploit wouldn't really be a good encryption scheme.
+You may want to look into group signatures. This is not a direct answer to your question but it may achieve what you want to do. If it does, instead of developing an adhoc protocol go with group signatures.
+Hmm. Just to verify that I'm understanding correctly. A signer asks the server to sign a document with a root certificate .
+
+The signed document is then shared with a user, who verifies that the signature is indeed done by the trusted root.
+
+Then, at some point in time, it turns out that the signature of a specific signer was malicious. You would then like to revoke that signature without divulging who the malicious signer was. 
+
+I'm assuming that the user does not need to know who the signer for a specific document is, just that the signer is trusted by the root? (The user might not even be allowed to know who the signer is?)
+
+If that's the case I would suggest something similar to /u/Mike22april: Issue per-document certificates from the root with very short lifetimes. On the server you store what document and signer is associated with which per-document certificate, and if you need to invalidate signatures you simply revoke the per-document certificates as needed.
+
+If revocations are frequent, and there is no resonable way to "shard" the revocation list (*) the list of revoked certificates would get large, which could pose a problem. But it seems quite simple to implement.
+
+Depending on what the trust model is and requirements are, you might not even need to generate short-lived certificates and instead just sign with a ≈root cert and handle invalidations outside of the PKI. I.e, keep a "public" list of document hashes which the server no longer stand by and "revoke" those in the application layer on the client.
+
+(*): If there are many signers, many documents, and many malicious signers, and all users are interested in knowing about all revoked documents forever, each client would need to keep a list of alla revocations (possibly forever).
+Im assuming you are signing with an X.509 client certificate?
+
+There's actually solutions out there whereby:
+1) you can on demand issue a very short lived client certificate to an individual user based on their AD credentials
+2) short lived means valid for 3 seconds up to a few minutes, whatever you want
+3) each short lived cert will expire but that does not invalidate it or any digital signatures created during that validity period. Each cert has a revocation option as well , only when you revoke it, will a signature become invalid (or if the doc is changed after making it)
+4) you can anonymize the issued certificate, whereby you decide what the criteria in the subject meta data is that determines anonymization
+
+You can choose to implement for example REST API's to solely keep these signing certs server side or auto enroll and install them at the user's end-point.
+When at the user's end-point the cert is automatically removed upon renewal so no garbage remains.
+
+Server side signing or timestamping is ofcourse still required to ensure a document was signed at a certain time and date (as a user could theoretically change their clock a d sign in that pas or even in the future depending on cert validity periods)
+Have you considered using blockchain?
+Can you compare it with https://github.com/zmap/zlint as a cert linter?
+Looks really cool, loved the demo, thanks for sharing! I’ll definitely be using this in the future.
+I read the title and have absolutely no idea what this means.
+You don't need WebSockets for this. You can simply use HTTPS by having the server return a JSON Web Token to the client. The JWT will include the username and token expiry time in the payload (random data is not needed). The client signs the JWT with the private key and sends another HTTPS request with both the signature and the JWT and the server verifies both. The server can then respond with a new JWT that the client can use for the rest of the session.
+This is a personal project, that I started doing about 3 months ago, I still have a lot of work to do. For know my biggest problem is how I should honey encrypt email , since we often have a maximum of 4 different email the possible output shouldn't invent thousand email for each password. And in the case a hacker know the victim email he could use this to detect wrong password ... So maybe It's a better idea to not honey encrypt email ...
+
+Ps : sorry for my english...I'm french
+
+TLDR : I don't know how email should be Honey Encrypted
+Each word in the phrase has a certain amount of entropy which they contribute to the total secret entropy, as measured in bits of entropy. The amount of work to guess the missing words amount to about 2 ^ (sum of unknown entropy). If 1 word has 10 bits and 2 words are missing that's 2^(10+10) work to guess, or 2^20 attempts - which is quite small.
+
+There is however an existing scheme for splitting secrets for this purpose, Shamir's secret sharing scheme.
+
+You can set a threshold of how many shares out of the total created which will be necessary to recover the private key, like 3 out of 5 total or any other threshold value which you want (you can of course skip the threshold and just go for 5 out of 5 for recovery, etc). If you only have some shares but not enough to meet the threshold then you have *no* advantage at guessing the private key compared to if you didn't know any shares at all (information theoretic security).
+If you use AES for encryption, then security of the files depends on the security of your encryption password + account security & the security of your own computer.
+
+If you use zipcrypto (ancient and insecure, but may still be default in some places), then you may as well not encrypt.
+
+As for determining if your password, account and computer is secure enough, that's all down to your own threat model.
+
+Note that a key file generally doesn't add much practical security over a password, but it has some uses since it makes bruteforce attacks more complicated. But you still have to make sure it's always available to you without being available to the potential attacker, or else it's pointless.
+Read again everything we said here: [https://www.reddit.com/r/crypto/comments/mhvw8f/onedrive\_or\_bitwarden\_for\_secure\_documents/](https://www.reddit.com/r/crypto/comments/mhvw8f/onedrive_or_bitwarden_for_secure_documents/)
+Not all zip programs use the same methods for encryption. Some have incredibly weak key derivation and as such aren’t very secure.
+There's a chance, but it's minimal.
+Do you want to encrypt the folder file by file, or as a whole? 
+
+If you want a whole folder encrypted as one, first archive it (with libtar, probably), so you have a single file to work on.
+
+You can then treat (the/each) file as a single char* for encryption API purposes. [Doing it with libsodium is pretty easy, this document should explain everything you need.](https://doc.libsodium.org/public-key_cryptography/authenticated_encryption) I believe the OpenSSL equivalent would be [EVP Seal/Open](https://wiki.openssl.org/index.php/EVP_Asymmetric_Encryption_and_Decryption_of_an_Envelope), but I haven't messed with OpenSSL in a long time, someone more familiar than me should probably doublecheck.
+I wouldn't recommend OpenSSL. Instead, take a look at libsodium. It's safer.
+So - tangental question.  How does some of this analysis change when factoring in the increasing focus by the US IRS on cryptocurrency exchange?  The concept of on-chain privacy seems directly contrary to the evolving policy on that front, which makes me wonder whether we'll see more attempts to restrict cryptocurrencies due to such.
+
+Not like it'd actually help because we've down that road with export controls on cryptography on the past, but...
+Of interest to /r/crypto, this talks about the tension between cryptocurrency and cryptography, and the cryptographers that work on cryptocurrency. If you're looking at the title thinking, "This is cryptocurrency spam! GTFO my /r/crypto you blockchainiac!" then you might want to read the part about gatekeeping.
+
+I was conflicted about submitting it here, because while it's culturally relevant for /r/crypto, it's also likely to trigger the gag reflex of a lot of readers. I asked one of the mods privately and they said they thinks it belongs here.
+
+Also, I never abbreviate the wrong term as "crypto" in the entire article, so if that's a pet peeve of yours, proceed without worry :3
+Thanks for sharing, I found it informative and pretty balanced
+i always say crypto means cryptography as cryptocurrency newbies flood reddit, forums and chats and ask in channels about the cryptography stuff which coins they should buy. at one point this gets reaaaally unnerving, because of course most of them do not read the topic or FAQ of that area.
+Had a quick look at the code:
+
+I know it's more of a self-attack, but isn't the scanf castle.c:112 vulnerable to buffer overflows? I get that it's more of a "well don't do that then", but it seems kinda sloppy to silently corrupt memory if someone's password is too long.
+
+And doesn't scanf only read a single word when used like that, so if someone uses a 6 word passphrase, the later words just won't be used for encryption, which is Really Bad.
+a nice basic lockpick set and some cheap locks
+Well, before buying any books I would peruse her library first to check what she has and then also "interrogate her CIA style" ;-) The info you want to extract? What books she really likes, or has read in the past but would like to have on her shelves. 
+
+For instance, a classic - old but considered kind of a "bible" - is [The Codebreakers](https://www.goodreads.com/book/show/29608.The_Codebreakers) by David Kahn, she's probably already read it and might have a cheap or paperback copy of it, so a nice thing would be to get the hardcover version (is slightly over your budget on Amazon but you might find it cheaper around)
+
+Or you could get something newer but on different topic, very related to cryptography "somehow", it came out last month, if she's also interested in biology, it might do: [The Code Breaker](https://www.goodreads.com/book/show/54968118-the-code-breaker) by Walter Isaacson (I'm not affiliated with this suggestion, but it's kind of funny: you could even joke and play dumb saying that you thought it was about crypto ;-)
+
+What about movie/tv series? You could get a DVD/BluRay (I know, everything is on Netflix, but there are things people would like to own, especially if old. See? I told you interrogation would come handy!), things like Wargames, Sneakers, Hackers, Alias...
+
+Other ideas could be "toys" (never refer to them as such, crypto people tend to get offended ;-) I'm thinking about puzzles like [Eternity](https://en.wikipedia.org/wiki/Eternity_puzzle) or Eternity II, unfortunately new are very difficult to find and expensive (on ebay you might find it for not less than $40 but they are usually from Down Under) but, honestly, if I were given a second-hand one, I wouldn't mind at all and would consider it a great gift!
+
+For something cheaper, a simple t-shirt, like the "Crypto-king" Burgerking styled, or with the Kriptos letters on it, I'm talking about this [sculpture](https://en.wikipedia.org/wiki/Kryptos), just in case you've never heard of it.
+
+Or actually, another great idea if you live nearby, or plan to visit Washington sooner or later: a ticket to the [Spy Museum](https://spymuseumstore.org/), actually, you could get lots of other gift ideas from their store.
+
+Happy birthday to your friend!
+Maybe an encryption disk? [https://ibb.co/kxV8m3B](https://ibb.co/kxV8m3B)  
+I gave myself this present, because no one knows a better gift than myself :)
+just an idea, maybe you don't have to buy her a gift related to cryptography but you can instead have certain crypto puzzles she has to solve to get to the gift
+What about a t-shirt?  Such as:
+
+* [Elliptic curve t-shirt](https://www.redbubble.com/i/t-shirt/Elliptic-Curves-by-hkrmerch/47865160.IJ6L0.XYZ)
+* [RSA t-shirt](https://www.redbubble.com/i/t-shirt/Public-RSA-Key-by-cem/14556375.WFLAH)
+* [Encryption t-shirt](https://www.redbubble.com/i/t-shirt/Dance-Like-No-One-s-Watching-Encrypt-Like-Everyone-Is-by-dumbshirts/21378117.UIIS2.XYZ)
+* [A nerdy mathematics t-shirt](https://www.amazon.com/Math-Shirt-Greater-Average-T-Shirt/dp/B07P9LX86H)
+Budget limits?
+
+A simple suggestion is cryptography books. See if you can find out which (if any) she has already, and get her a good book which she doesn't already have.
+The description of "forever key cryptography" seems very suspect to me. He is basically deriving new keys all the time, and then claiming that breaking one of those keys would not break the others, and so the system will hold forever. This is obviously not true for fixed-length keys.
+
+I think the author gets around this by having effectively infinite-entropy keys (specifically, ordered sets of real numbers), and using only some of that entropy (the "ordinal matrix") for actual encryption. Money quote:
+
+> The attacker does not know the size of K0. There are 
+infinite number of options for K0 that given the extraction 
+procedures to K1, K2, .. Kt would have a key in each of the 
+infinite series (t infinite series). Say then, that despite
+infinite use, t → ∞, brute force cryptanalysis of the secret K0
+is doomed to fail.
+
+This ignores the finite realities of computing. It's also really hand-wavey.
+Failed to understand the point of this article.
+
+For instance, " community of communication partners who shares a secret cryptographic instrument while not sharing actual keys" - This can be done with interactive Diffie Hellman, Shamir's Secret Sharing or non-interactive with PBC of extended degree.
+
+I think we need a better example. Or I don't understand. Can someone  explain it to me like I was 5.
+This subreddit is about cryptography, not cryptocurrency, but in this case I'm allowing the post because it's a related and interesting question.
+
+Safely storing keys can be a hard problem depending on your circumstances, maybe somebody else here has a good suggestion. My own suggestion would be to try to find somebody you can trust to hold it to minimize the risk of loss.
+Shamir's secret sharing, assuming that's what's going on under the hood, is fairly well established and solid. The premise on their website assuring that the basic mode is a 2/3 multisig and they hold only one key gives you a pretty solid place to lose one of your two keys and recover. It should also shield you against them going under, as you still have two keys.
+
+What you do need to consider is that the "free" version is simply a wallet app, and apparently actually getting the above will set you back $120 a year. Is it worth that? That's debatable. Personally I'd be more likely to use a single hardware device, with the seed retained safely.
+
+Also, consider that this actually costs you some of the benefit of your hardware device, which ideally is very secure. If someone can compromise your mobile device, then they have the key from your app and access to the escrowed key and can "recover a lost device" for the hardware piece they don't have.
+Hi, 
+
+Is there any good videos to watch on learning about crypto for beginners??
+Thanks,
+> The first is to find |P| and factor it. But factoring is a hard problem (and finding |P| isn't exactly easy). Is it feasible to factor numbers that are around the size 2^160? 
+
+Numbers of this size can be factorized almost instantly. You can test by yourself here: https://www.alpertron.com.ar/ECM.HTM
+You do not even need to go as far as using complex tools like GNFS (which is the best to factor much larger integers).
+
+> His other option would be to find the number of points on the curve (the order of the group) then check that number is divisible by a large prime.
+
+A good thing we have [Schoof's algorithm](https://en.wikipedia.org/wiki/Schoof%27s_algorithm) to count the number of points on an elliptic curve, and its improvement the [SEA algorithm](https://en.wikipedia.org/wiki/Schoof%E2%80%93Elkies%E2%80%93Atkin_algorithm) that makes it very efficient.
+
+> Then with a high probability, P will have order which is divisible by that same large prime. This has the same problem that Bob's first approach had, except finding the number of points on the curve is (as far as I can tell) harder than finding |P|. Both of these options seem bad. In practice, what is done to ensure |P| is divisible by a large prime?
+
+You might as well only checks that the number of points (calculated with the SEA algorithm) is a prime number. This can be done with a primality test such as the [Miller-Rabin test](https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test).
+
+Of course, it depends on the model of the curve. Curves in Montgomery form always have at least a factor 4 in the cardinality, so it has to be taken into account.
+
+> Attacks with Pairing: I don't entirely understand the concept of pairings. But as far as I can tell, as long as the curve used is not supersingular (another word I don't completely understand), attacks with pairings are probably infeasible. Is there a fast way to determine if a curve is supersingular?
+
+​It is related to the embedding degree of the curve. If you generate random parameters it is unlikely you will find a pairing-friendly curve.
+Though, a sanity check is not costly. See the transfer page on [safecurves](https://safecurves.cr.yp.to/transfer.html).
+
+> Anomalous Curves: If the number of points on an elliptic curve over F_q is equal to q, then the curve is called anomalous, and solving the ECDLP is easy. Can Bob determine if a curve is anomalous without computing the number of points on the curve? If not, is computing the number of points on the curve feasible?
+
+Same as above. You really need to construct the curve in a specific manner to find such a rare curve.
+And anyone can check the cardinality so a malicious use of an anomalous curve can be detected.
+Pairings allow moving from an elliptic curve group to extension fields, with a complex field being an extension field of degree 2 for example.
+
+The degree of the extension field you move to is determined by your elliptic curve embedding degree.
+
+Just like there is the GNFS that is significantly faster than generic group techniques (Pollard), on extension fields there is the TNFS (Towered Number Field Sieve) that can be used.
+
+So basically pairings move a DLP computation from a group where it's hard to a field where more efficient techniques are available.
+
+Now a safe size is about 384-bit (curve prime modulus) x 12 (embedding degree) = ~4608-bit. If your EC prime modulus is about 256-bit, an embedding degree of at least 18 should be ok (but it's actually hard to find low embedding degree curves and finding efficient low-embedding degree curves is worthy of a paper).
+Relative noob and even more so for EC - so I am asking questions rather than answering questions - hopefully you or someone else will answer them.  
+
+> Pohlig-Hellman: To protect against this, Bob must ensure that the order of P is divisible by a large prime number 
+
+
+1) Isn't it a recommended practice to use standard curves & generators?   
+
+2) Aren't there lists of safe primes (or Sophie Germain Primes from which Safe primes can be known easily) which can be used? Since (p - 1) for these are guaranteed to have large factors. For e.g. RFC 3526 lists several safe primes for use in DHKE. Can't something similar be done for EC?   
+
+
+
+So I don't understand the motivation for your question (considering others have answered your questions, this is surely because I am stupid & don't know enough).
