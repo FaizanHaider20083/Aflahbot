@@ -16,7 +16,7 @@ user_agent = 'console: message_bot 1.0',
 username = 'onlykeyla',
 password = '1233456')
 
-message = "Hey babe will you enter my new sub and check my divine body XoXo? r/Divinebody"
+
 
 def check_author(author):
     
@@ -42,7 +42,7 @@ while (i>0):
                 else :
                     try:
                         print(comment.author)
-                        #reddit.redditor(author).message('Check out my body', message)
+                        #reddit.redditor(author).message('Check ', 'Mate')
                         
                         print("Message sent")
                                     
